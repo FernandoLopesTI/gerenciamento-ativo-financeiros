@@ -1,0 +1,21 @@
+.sidenav {
+  background: #343A40;
+  color: #DDE2FF;
+
+}
+.nav-wrapper {
+  background: #FFFFFF;
+
+  top: -10px;
+}
+.flow-text{
+  color: #DDE2FF;
+}
+a{
+  color: #DDE2FF;
+}
+.sidenav li > a > i,
+.sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"],
+.sidenav li > a > i.material-icons {
+  color: #DDE2FF;
+}
