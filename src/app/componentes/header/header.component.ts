@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ElementRef, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef, AfterViewInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,7 @@ import { Component, OnInit, ViewChild ,ElementRef, AfterViewInit} from '@angular
 })
 export class HeaderComponent implements OnInit , AfterViewInit{
   @ViewChild('mobile') sideNav?: ElementRef;
+  @Input() title: string = "";
 
   constructor() { }
 

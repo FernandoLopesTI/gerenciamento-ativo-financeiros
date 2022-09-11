@@ -7,6 +7,12 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'Gerenciamento de Ativo Financeiros';
+  titleRouter: string = '';
+  year: number = new Date().getFullYear();
+
+  onActivate(event : any){
+    this.titleRouter = event.title;
+  }
 
 }
 

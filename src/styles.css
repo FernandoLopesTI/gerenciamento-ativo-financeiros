@@ -17,14 +17,6 @@ html, body {
 }
 
 
-
-article, aside, footer, header, nav, section {
-  display: block;
-
-
-}
-
-
 footer{
 
   width: 100%;
@@ -34,3 +26,47 @@ footer{
   left: 300px;
 
   }
+
+ .card {
+    background: #FFFFFF;
+    display: flex;
+    position: fixed; 
+    left: 16%;
+    right: 50px;
+    width: 83%;
+    border-radius: 1px;
+    height: 85%;
+    
+
+  }
+
+  .pagination{
+    display: flex;
+    position: left;
+  }
+  nav{
+    background: #FFFFFF;
+    border: 0;
+    box-shadow: none;
+  }
+
+  nav .brand-logo2 {
+    position: absolute;
+    color: #152536;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+}
+
+  header {
+    background: #FFFFFF;
+    display: flex;
+    /* position: fixed; */
+    left: 500px;
+  
+  }
+  .material-icons{
+    margin-top: 10px;
+    color: #343A40;
+  }
+  
