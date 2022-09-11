@@ -12,6 +12,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { RegisterComponent } from './componentes/register/register.component';
+import { ButtonActionsComponent } from './componentes/button-actions/button-actions.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { RegisterComponent } from './componentes/register/register.component';
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ButtonActionsComponent
   ],
   imports: [
     BrowserModule,

@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
     
   }
 
+  getRouter():string {
+    return "cadastrar";
+  }
+
 }

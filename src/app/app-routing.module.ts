@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: '',redirectTo: 'inicio', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'cadastrar', component: RegisterComponent },
+  { path: 'cadastrar/:id', component: RegisterComponent },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output , EventEmitter} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import * as M from 'materialize-css';
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   
   };
 
-  constructor() { 
+  constructor(private route: ActivatedRoute) { 
     this.activate.emit(this.title);
     document.addEventListener('DOMContentLoaded', function() {
       var select = document.querySelectorAll('select');
@@ -29,7 +30,11 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    let idParam: number = + this.route.snapshot.paramMap.get('id')!;
+    if (idParam) {
+      alert('Registro para editar id: ' + idParam);
+    }
+    
   }
 
 }
