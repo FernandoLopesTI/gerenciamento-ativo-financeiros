@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AssetStorageService {
   static KEY:string = 'assets';
   assets!: Asset[];
-  asset: Asset = Asset.new();
+  asset!: Asset;
   private assetSource!: BehaviorSubject<number>;
   constructor(){
     this.assets = this.getAllAsset();
@@ -19,23 +19,28 @@ export class AssetStorageService {
     return WebStorageUtil.get(AssetStorageService.KEY);
   }
 
-  getAssetById(id: number): Asset{
+  getAssetById(id: number): Asset {
     this.assets = this.getAllAsset();
     for (let a of this.assets) {
         if (a.id == id){
           this.asset = a;
         }
     }
-    return this.asset ;
+    return this.asset;
   }
 
   save(asset: Asset){
+    if(asset.quantity && asset.price)
+    asset.total = (asset.quantity * asset.price);
     this.assets = this.getAllAsset();
     this.assets.push(asset);
     WebStorageUtil.set(AssetStorageService.KEY, this.assets);
   }
 
   update(asset: Asset){
+     if(asset.quantity && asset.price)
+      asset.total = (asset.quantity * asset.price);
+
     this.assets = this.getAllAsset();
     this.delete(asset.id);
     this.save(asset);

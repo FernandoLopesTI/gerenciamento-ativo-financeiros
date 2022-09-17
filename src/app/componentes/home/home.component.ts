@@ -1,7 +1,6 @@
+import { AssetStorageService } from './../register/asset-storage.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Asset } from 'src/model/assets';
-import { AssetStorageService } from './../register/asset-storage.service';
-
 
 @Component({
   selector: 'app-home',
