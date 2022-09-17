@@ -1,0 +1,9 @@
+hr {
+  margin: 40px 0;
+}
+.hr1 {
+  box-shadow: none;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, #CCC, transparent);
+}

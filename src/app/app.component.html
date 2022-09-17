@@ -1,0 +1,8 @@
+<app-header [title] = "this.titleRouter"></app-header>
+<app-menu></app-menu>
+
+<main>
+  <router-outlet (activate) = "onActivate($event)"></router-outlet>
+</main>
+
+<app-footer [year]= "this.year" ></app-footer>

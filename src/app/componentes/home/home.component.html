@@ -1,0 +1,42 @@
+<div class="col s12 m7">
+    <div class="card horizontal">
+
+      <div class="card-stacked">
+        <h3 class="card-title">{{this.title}}</h3>
+        <div class="card-content">
+            <table>
+                <thead>
+                  <tr>
+                      <th data-field="td-type" >#</th>
+                      <th data-field="td-type" >NOME</th>
+                      <th data-field="td-type" >QT COMP</th>
+                      <th data-field="td-type" >TIPO</th>
+                      <th data-field="td-date">DT COMPRA</th>
+                      <th data-field="td-value" >VL COMPRA</th>
+                      <th data-field="td-value">VL TOTAL</th>
+                      <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of assets">
+                      <th>{{ a.id | number }}</th>
+                      <th>{{ a.name | uppercase }}</th>
+                      <th>{{a.quantity | number}}</th>
+                      <th>{{a.type | uppercase }}</th>
+                      <th>{{a.datePaymend | date: "dd/MM/yyyy" }}</th>
+                      <th>{{a.price | currency: "BRL" }}</th>
+                      <th>{{a.total | currency: "BRL" }}</th>
+                      <th>
+                        <app-button-actions
+                        [id] = "a.id"
+                        [routerName] = 'getRouter()'
+                        (delete)="onDelete(a.id)"></app-button-actions>
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
