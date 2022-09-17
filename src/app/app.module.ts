@@ -35,7 +35,6 @@ import { ButtonActionsComponent } from './componentes/button-actions/button-acti
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxMaskModule,
     NgxMaskModule.forRoot()
   ],
   providers: [],

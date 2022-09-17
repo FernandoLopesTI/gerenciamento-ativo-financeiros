@@ -55,7 +55,7 @@ export class AssetStorageService {
     return true;
   }
 
-  getAssets(){
+  getAssets():Asset[]{
     this.assets = this.getAllAsset();
     return this.assets;
   }

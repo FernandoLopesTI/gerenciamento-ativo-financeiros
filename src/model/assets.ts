@@ -15,7 +15,6 @@ export class Asset {
     price?:number,
     currentPrice?:number,){
 
-    this.id = Math.round(Math.random() * 1000);
     this.name = name;
     this.type = type;
     this.datePaymend = datePaymend;
@@ -30,9 +29,6 @@ export class Asset {
     return new Asset(undefined,undefined,undefined,undefined,undefined,undefined);
   }
 
-  calctotal(){
-    if(this.quantity && this.price)
-    this.total = (this.quantity * this.price);
-  }
+
 
 }
