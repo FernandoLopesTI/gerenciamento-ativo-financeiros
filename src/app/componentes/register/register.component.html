@@ -1,58 +1,98 @@
 <div class="card horizontal">
-    <div class="card-stacked ">
-        <div class="card-action "> 
-            <nav>
-                  <p class="brand-logo2">{{this.title}}</p>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="">Cancelar</a></li>
-                    <li><a href="">Salvar</a></li>
-                  </ul>
-
-              </nav>
-           
-        </div>
-        
-        <div class="card-content">
-            <div class="row">
-                <div class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">NOME</label>  
-                        </div>     
-                        <div class="input-field col s12 m6">
-                            <select>
-                                <option value="" disabled selected></option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                              </select>
-                              <label>TIPO</label> 
-                        </div> 
-
-                    </div>  
-                    <div class="row">
-                        <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">QUANTIDADE</label>  
-                        </div>     
-
-                        <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="datepicker">
-                            <label for="autocomplete-input">DATA COMPRA</label>  
-                        </div>    
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">VALOR</label> 
-                            </div>
-                            </div>
-                            
-
-                </div>
-            </div>
-
-        </div>
+  <div class="card-stacked ">
+    <div id="msg-login" class="card-panel white-text" [class.red]="!this.isSuccess" [class.blue]="this.isSuccess"
+      *ngIf="this.isShowMessage">
+      {{ this.message }}
     </div>
+    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+      <div class="card-action ">
+        <nav>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><button class="btn waves-effect waves-light amber darken-4" type="submit"
+                [disabled]="!form.valid">Salvar</button></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="text" id="input-name" name="input-name" class="validate" pattern="^[^\W_]*\d+[^\W_]*$"
+                  [(ngModel)]="this.asset.name" #name="ngModel" required>
+                <label for="input-name">NOME</label>
+                <div class="red-text" *ngIf="name.errors?.['required'] && name.touched">
+                  Por favor, o nome do ativo obrigatório.
+                </div>
+                <div class="red-text" *ngIf="name.errors?.['pattern']">
+                  O Nome do ativo deve conter numeros.
+                </div>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="text" id="input-type" name="input-type" class="validate" [(ngModel)]="this.asset.type"
+                  #name="ngModel" #type="ngModel" required>
+                <label for="autocomplete-input">TIPO</label>
+                <div class="red-text" *ngIf="type.errors?.['required'] && type.touched">
+                  Por favor, o tipo do ativo obrigatório.
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="number" name="input-quantity" id="input-quantity" class="validate"
+                  [(ngModel)]="this.asset.quantity" #quantity="ngModel" required>
+                <label for="autocomplete-input">QUANTIDADE</label>
+                <div class="red-text" *ngIf="quantity.errors?.['required'] && quantity.touched">
+                  Por favor, a quantidade do ativo obrigatório.
+                </div>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="date" id="input-datePaymend" name="input-datePaymend" class="validate"
+                  [(ngModel)]="this.asset.datePaymend" #datePaymend="ngModel" required>
+                <label for="input-datePaymend">DATA COMPRA</label>
+                <div class="red-text" *ngIf="datePaymend.errors?.['required'] && datePaymend.touched">
+                  Por favor, a data da compra do ativo obrigatório.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="text" id="input-price" name="input-price" [(ngModel)]="this.asset.price" class="validate"
+                  #price="ngModel" mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "
+                  [dropSpecialCharacters]="true" [showMaskTyped]="false" required>
+                <label for="input-price">VALOR</label>
+                <div class="red-text" *ngIf="price.errors?.['required'] && price.touched">
+                  Por favor, O valor do ativo obrigatório.
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <hr class="hr1">
+              <div class="input-field col s12 m6">
+                <input type="text" id="input-currentPrice" name="input-currentPrice"
+                  [(ngModel)]="this.asset.currentPrice" class="validate" #currentPrice="ngModel" mask="separator.2"
+                  [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " [dropSpecialCharacters]="true"
+                  [showMaskTyped]="false">
+                <label for="input-currentPrice">ATUALIZAR COTAÇÃO ATUAL </label>
+                <div class="red-text" *ngIf="currentPrice.errors?.['pattern']">
+                  Valor invalido. valor digitado não é um valor monetário.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+
 </div>
