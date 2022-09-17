@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    alert(this.asset);
     if(!this.assetStorageService.isExist(this.asset.id)){
       this.assetStorageService.save(this.asset);
     } else {

@@ -20,9 +20,9 @@
                 <tbody>
                     <tr *ngFor="let a of assets">
                       <th>{{ a.id | number }}</th>
-                      <th>{{ a.name | titlecase }}</th>
+                      <th>{{ a.name | uppercase }}</th>
                       <th>{{a.quantity | number}}</th>
-                      <th>{{a.type | lowercase }}</th>
+                      <th>{{a.type | uppercase }}</th>
                       <th data-field="td-date" >{{a.datePaymend | date: "dd/MM/yyyy" }}</th>
                       <th>{{a.price  | currency: "BRL" }}</th>
                       <th>{{a.currentPrice  | currency: "BRL"}}</th>
