@@ -1,61 +1,41 @@
 <div class="col s12 m7">
     <div class="card horizontal">
-      
+
       <div class="card-stacked">
         <h3 class="card-title">{{this.title}}</h3>
         <div class="card-content">
             <table>
                 <thead>
                   <tr>
-                      <th>#</th>
-                      <th>NOME</th>
-                      <th>QT COMP</th>
-                      <th>TIPO</th>
-                      <th>DT COMPRA</th>
-                      <th>VL COMPRA</th>
-                      <th>VL TOTAL</th>
+                      <th data-field="td-type" >#</th>
+                      <th data-field="td-type" >NOME</th>
+                      <th data-field="td-type" >QT COMP</th>
+                      <th data-field="td-type" >TIPO</th>
+                      <th data-field="td-date">DT COMPRA</th>
+                      <th data-field="td-value" >VL COMPRA</th>
+                      <th data-field="td-value">VL TOTAL</th>
                       <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <th>1</th>
-                      <th>PETR4</th>
-                      <th>20</th>
-                      <th>AÇÃO</th>
-                      <th>21/02/2021</th>
-                      <th>R$ 27,01</th>
-                      <th>R$ 29,32</th>
+                    <tr *ngFor="let a of assets">
+                      <th>{{ a.id | number }}</th>
+                      <th>{{ a.name | titlecase }}</th>
+                      <th>{{a.quantity | number}}</th>
+                      <th>{{a.type | lowercase }}</th>
+                      <th data-field="td-date" >{{a.datePaymend | date: "dd/MM/yyyy" }}</th>
+                      <th>{{a.price  | currency: "BRL" }}</th>
+                      <th>{{a.currentPrice  | currency: "BRL"}}</th>
                       <th>
-                        <app-button-actions [id] = 1 [routerName] = 'getRouter()' ></app-button-actions> 
-                      </th>
-                    </tr>
-                    <tr>
-                      <th>2</th>
-                      <th>PETR4</th>
-                      <th>20</th>
-                      <th>AÇÃO</th>
-                      <th>21/02/2021</th>
-                      <th>R$ 27,01</th>
-                      <th>R$ 29,32</th>
-                      <th>
-                        <app-button-actions [id] = 2 [routerName] = 'getRouter()' ></app-button-actions> 
+                        <app-button-actions
+                        [id] = "a.id"
+                        [routerName] = 'getRouter()'
+                        (delete)="onDelete(a.id)"></app-button-actions>
                       </th>
                     </tr>
                   </tbody>
                 </table>
-          
-        </div>
-        <div class="card-action ">
-            <ul class="pagination">
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
-                <li class="waves-effect"><a href="#!">3</a></li>
-                <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-              </ul>
+
         </div>
       </div>
     </div>

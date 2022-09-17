@@ -1,58 +1,111 @@
+
+
 <div class="card horizontal">
+
+
+
     <div class="card-stacked ">
-        <div class="card-action "> 
+      <div
+      id="msg-login"
+      class="card-panel white-text"
+      [class.red]="!this.isSuccess"
+      [class.blue]="this.isSuccess"
+      *ngIf="this.isShowMessage"
+    >
+      {{ this.message }}
+    </div>
+      <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+        <div class="card-action ">
             <nav>
                   <p class="brand-logo2">{{this.title}}</p>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="">Cancelar</a></li>
-                    <li><a href="">Salvar</a></li>
+                    <li><button class="btn waves-effect waves-light amber darken-4" type="submit"  [disabled]="!form.valid" >Salvar</button></li>
                   </ul>
 
               </nav>
-           
+
         </div>
-        
+
         <div class="card-content">
             <div class="row">
                 <div class="col s12">
                     <div class="row">
                         <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">NOME</label>  
-                        </div>     
+                            <input type="text"
+                            id="input-name"
+                            name="input-name"
+                            class="validate"
+                            [(ngModel)]="this.asset.name"
+                            #name="ngModel"
+                            required>
+                            <label for="input-name">NOME</label>
+                            <div class="red-text" *ngIf="name.errors?.['required'] && name.touched">
+                              Por favor, o nome do ativo obrigatório.
+                            </div>
+                        </div>
                         <div class="input-field col s12 m6">
-                            <select>
-                                <option value="" disabled selected></option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                              </select>
-                              <label>TIPO</label> 
-                        </div> 
+                          <input type="text"
+                          id="input-type"
+                          name="input-type"
+                          class="validate"
+                          [(ngModel)]="this.asset.type"
+                          #name="ngModel"
+                          required>
+                          <label for="autocomplete-input">TIPO</label>
+                        </div>
 
-                    </div>  
+                    </div>
                     <div class="row">
                         <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">QUANTIDADE</label>  
-                        </div>     
+                            <input
+                             type="number"
+                             name="input-quantity"
+                             id="input-quantity"
+                             class="validate"
+                             [(ngModel)]="this.asset.quantity"
+                             required>
+                            <label for="autocomplete-input">QUANTIDADE</label>
+                            <div class="red-text" *ngIf="name.errors?.['required'] && name.touched">
+                              Por favor, a quantidade de ativo é obrigatório.
+                            </div>
+                        </div>
 
                         <div class="input-field col s12 m6">
-                            <input type="text" id="autocomplete-input" class="datepicker">
-                            <label for="autocomplete-input">DATA COMPRA</label>  
-                        </div>    
+                            <input
+                            type="date"
+                            id="input-datePaymend"
+                            name="input-datePaymend"
+                            class="validate"
+                            [(ngModel)]="this.asset.datePaymend"
+                            required>
+                            <label for="input-datePaymend">DATA COMPRA</label>
+                            <div class="red-text" *ngIf="name.errors?.['required'] && name.touched">
+                              Por favor, o data da compra do ativo é obrigatório.
+                            </div>
+                        </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 m6">
-                                <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">VALOR</label> 
-                            </div>
-                            </div>
-                            
+                          <div class="input-field col s12 m6">
+                              <input type="text"
+                              id="input-price"
+                              name="input-price"
+                              [(ngModel)]="this.asset.price"
+                              class="validate money"
+                              mask="separator.2"
 
+                              required>
+                            <label for="input-price">VALOR</label>
+                            <div class="red-text" *ngIf="name.errors?.['required'] && name.touched">
+                              Por favor, o valor da compra do ativo é obrigatório.
+                            </div>
+                          </div>
+                        </div>
                 </div>
             </div>
 
         </div>
+      </form>
     </div>
+
 </div>
+

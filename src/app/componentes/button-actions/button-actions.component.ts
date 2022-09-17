@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ export class ButtonActionsComponent implements OnInit {
 
   @Input() id: number = 0;
   @Input() routerName: string = '';
+  @Output() delete = new EventEmitter<any>();
 
   constructor(
     private router: Router
@@ -19,7 +20,7 @@ export class ButtonActionsComponent implements OnInit {
   }
 
   onclickDelete = () =>{
-    console.log(this.id);
+    this.delete.emit(true);
   }
 
   onclickEdit = () =>{
