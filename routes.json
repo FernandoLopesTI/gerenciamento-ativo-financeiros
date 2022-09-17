@@ -1,0 +1,4 @@
+{
+  "/ativos": "/assets",
+  "/ativos/:id": "/assets?id=:id"
+}

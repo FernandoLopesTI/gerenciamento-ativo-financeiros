@@ -1,3 +1,5 @@
+import { Shared } from './../../utils/shared';
+import { AssetServiceService } from './../../service/asset-service.service';
 import { AssetStorageService } from './../register/asset-storage.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Asset } from 'src/model/assets';
@@ -5,8 +7,7 @@ import { Asset } from 'src/model/assets';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [AssetStorageService],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
@@ -17,11 +18,23 @@ export class HomeComponent implements OnInit {
   message!: string;
   isShowMessage: boolean = false;
 
-
-  constructor(private assetStorageService :AssetStorageService) {this.activate.emit(this.title); }
+  constructor(private assetStorageService :AssetServiceService) {this.activate.emit(this.title); }
 
   ngOnInit(): void {
-    this.assets = this.assetStorageService.getAssets();
+    this.getAllRegistro();
+
+  }
+
+  getAllRegistro(){
+    this.assetStorageService.getAssets().subscribe(
+      (data: Asset[] ) => {
+        if (!data || data.length == 0) {
+          alert('Nenhum resultado foi encontrado!');
+        }
+        this.assets = data;
+        Shared.initializeWebStorage(this.assets);
+      }
+  );
   }
 
   getRouter():string {
@@ -37,15 +50,19 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    let response: boolean = this.assetStorageService.delete(id);
-    this.isShowMessage = true;
-    this.isSuccess = response;
-    if (response) {
-      this.message = 'O Ativo foi removido com sucesso!';
-    } else {
-      this.message = 'Atenção! O Ativo não pode ser removido!';
-    }
-    this.assets = this.assetStorageService.getAssets();
+    this.assetStorageService.delete(id).subscribe(
+      () => {
+        this.isShowMessage = true;
+        this.isSuccess = true;
+        this.message = 'O Ativo foi removido com sucesso!';
+        this.getAllRegistro()
+      }
+    );
+
+  }
+
+  showdelet(){
+
   }
 
 }

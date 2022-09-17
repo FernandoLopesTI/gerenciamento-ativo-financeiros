@@ -1,0 +1,33 @@
+{
+  "assets": [
+    {
+      "id": 1,
+      "name": "PETR4",
+      "type": "AÇÃO",
+      "quantity": 20,
+      "datePaymend": "2022-05-21T00:12:50.798Z",
+      "price": 27.21,
+      "total": 544.2,
+      "currentPrice": 29.32
+    },
+    {
+      "id": 2,
+      "name": "XPLG11",
+      "type": "F.IMOBIL",
+      "quantity": 15,
+      "datePaymend": "2021-03-21T00:12:50.798Z",
+      "price": 91.77,
+      "total": 1376.55,
+      "currentPrice": 95.4
+    },
+    {
+      "name": "PETR4",
+      "type": "AÇÃO",
+      "datePaymend": "2022-01-21",
+      "price": 30,
+      "quantity": 15,
+      "total": 450,
+      "id": 3
+    }
+  ]
+}
