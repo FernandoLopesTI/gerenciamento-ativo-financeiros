@@ -1,5 +1,14 @@
 # gerenciamento-ativo-financeiros
 
+Este projeto tem como objetivo de ser um cadastro de ativos de investimentos (ex: AÇÕES , FUNDOS IMOBILIÁRIOS, CDB , FCI, TESOURO DIRETO, CRIPTOMOEDAS ETC)
+
+
+O frontend da aplicação foi desenvolvido com Angular e o backend foi simulado pela implementação de uma API Fake, usando o JSON Server.
+
+# Endereço de Deploy - GitHub Pages
+
+https://fernandolopesti.github.io/gerenciamento-ativo-financeiros/home
+
 # Protótipo
 
 https://www.figma.com/file/DvqV6NYEdwGUHuD94rvreK/Gerenciamento-de-ativos-financeiros?node-id=0%3A1
@@ -23,4 +32,4 @@ https://www.figma.com/file/DvqV6NYEdwGUHuD94rvreK/Gerenciamento-de-ativos-financ
 - [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
-- [ ] Build e deploy da aplicação.
+- [X] Build e deploy da aplicação.
