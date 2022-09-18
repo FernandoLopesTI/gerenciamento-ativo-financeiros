@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href=/gerenciamento-ativo-financeiros/",
+    "build": "ng build --base-href=/gerenciamento-ativo-financeiros/",
     "ghpages": "angular-cli-ghpages --dir=dist/gerenciamento-ativo-financeiros",
     "deploy": "npm run build & npm run ghpages",
     "watch": "ng build --watch --configuration development",
